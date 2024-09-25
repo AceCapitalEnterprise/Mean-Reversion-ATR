@@ -23,7 +23,7 @@ fut_expiry = '2024-09-26'
 
 while True:
     now = datetime.now()
-    if t(9, 30)<t(datetime.now().time().hour, datetime.now().time().minute)<t(15, 30) :
+    if t(4, 0)<t(datetime.now().time().hour, datetime.now().time().minute)<t(10, 0) :
         today = datetime.now().strftime("%Y-%m-%d")
         yesterday = (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d")
         
@@ -44,8 +44,8 @@ while True:
             olhc = data['Success']
             olhc = pd.DataFrame(olhc)
             olhc['datetime'] = pd.to_datetime(olhc['datetime'])
-            olhc = olhc[(olhc['datetime'].dt.time >= pd.to_datetime('09:15').time()) &
-                           (olhc['datetime'].dt.time <= pd.to_datetime('15:29').time())]
+            olhc = olhc[(olhc['datetime'].dt.time >= pd.to_datetime('03:45').time()) &
+                           (olhc['datetime'].dt.time <= pd.to_datetime('9:59').time())]
         
             olhc['12_EMA'] = olhc['close'].ewm(span=12, adjust=False).mean()
             olhc['26_EMA'] = olhc['close'].ewm(span=26, adjust=False).mean()
@@ -191,8 +191,8 @@ while True:
             olhc = data['Success']
             olhc = pd.DataFrame(olhc)
             olhc['datetime'] = pd.to_datetime(olhc['datetime'])
-            olhc = olhc[(olhc['datetime'].dt.time >= pd.to_datetime('09:15').time()) &
-                           (olhc['datetime'].dt.time <= pd.to_datetime('15:29').time())]
+            olhc = olhc[(olhc['datetime'].dt.time >= pd.to_datetime('03:45').time()) &
+                           (olhc['datetime'].dt.time <= pd.to_datetime('09:59').time())]
         
             olhc['12_EMA'] = olhc['close'].ewm(span=12, adjust=False).mean()
             olhc['26_EMA'] = olhc['close'].ewm(span=26, adjust=False).mean()
